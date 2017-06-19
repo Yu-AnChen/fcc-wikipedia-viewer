@@ -1,28 +1,23 @@
 # FccWikipediaViewer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+Build an app that is functionally similiar to [this](https://codepen.io/FreeCodeCamp/full/wGqEga/).
 
-## Development server
+## User Stories
+1. I can [search Wikipedia entries](https://www.mediawiki.org/wiki/API:Main_page) in a search box and see the resulting Wikipedia entries.
+2. I can click a button to see a [random Wikipedia entry](https://en.wikipedia.org/wiki/Special:Random).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Resources
+* [Wikipedia API sandbox](https://en.wikipedia.org/wiki/Special:ApiSandbox#action=query&titles=Main%20Page&prop=revisions&rvprop=content&format=jsonfm)
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+### Development server
 
-## Build
+Run `ng serve --hmr true` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+### Build
 
-## Running unit tests
+Run `ng build --prod --base-href "https://yu-anchen.github.io/[name-of-repo]/"` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
+### Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
