@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+@import '_variables.scss';
+body {
+	font-family: $fontFamily;
+	background-color: $bodyBgColor;
+	color: $textColor;
+	margin: 0 8px;
+}
