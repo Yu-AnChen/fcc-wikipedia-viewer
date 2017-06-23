@@ -18,14 +18,14 @@ import { WikipediaService } from './wikipedia.service';
 	providers: [WikipediaService]
 })
 export class WikiComponent implements OnInit {
-	items: Observable<string[]>;
+	// items: Observable<string[]>;
 
 	constructor(private wikipediaService: WikipediaService) { }
 
 	ngOnInit() {
 	}
 
-	search(term: string) {
-		this.items = this.wikipediaService.search(term);
-	}
+	// search(term: string) {
+	// 	this.items = this.wikipediaService.search(term);
+	// }
 }
