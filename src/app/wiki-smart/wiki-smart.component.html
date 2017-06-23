@@ -1,3 +1,14 @@
-<p>
-  wiki-smart works!
-</p>
+<h1>Smarter Wikipedia Demo</h1>
+<p>Search when typing stops</p>
+<input #term (keyup)="search(term.value)" />
+
+<a *ngFor="let item of items | async"
+	[ngClass]="{'fade': (isSearchingStream | async)}"
+	class="wiki-item"
+	[href]="item[2]">
+	<h3>{{item[0]}}</h3>
+	<p>{{item[1]}}</p>
+</a>
+<div *ngIf="!(items | async)?.length">
+	nothing being searched
+</div>

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/do';
 
 import { Subject } from 'rxjs/Subject';
 
@@ -11,36 +12,32 @@ import { WikipediaService } from '../wiki/wikipedia.service';
 
 @Component({
 	selector: 'app-wiki-smart',
-	template: `
-   		<h1>Smarter Wikipedia Demo</h1>
-    	<p>Search when typing stops</p>
-    	<input #term (keyup)="search(term.value)"/>
-		<ul>
-			<li *ngFor="let item of items | async">{{item}}</li>
-		</ul>
-	`,
+	templateUrl: './wiki-smart.component.html',
 	styleUrls: ['./wiki-smart.component.scss'],
 	providers: [WikipediaService]
 })
 export class WikiSmartComponent implements OnInit {
-	items: Observable<string[]>;
+	items: Observable<any>;
+	private isSearchingStream = new Subject<boolean>(); ;
+	private searchTermStream = new Subject<string>();
 
 	constructor(private wikipediaService: WikipediaService) { }
 
-	private searchTermStream = new Subject<string>();
 	search(term: string) {
-		console.log(term);
 		this.searchTermStream.next(term);
-		console.log(this.searchTermStream);
 	}
 
 	ngOnInit() {
 		this.items = this.searchTermStream
+			.distinctUntilChanged()
+			.do(term => this.isSearchingStream.next(true))
 			.debounceTime(300)
 			.distinctUntilChanged()
-			.switchMap((term: string) =>
-				this.wikipediaService.search(term)
-			);
+			.switchMap((term: string) => {
+				if (!term) return Promise.resolve([]);
+				return this.wikipediaService.search(term);
+			})
+			.do(result => this.isSearchingStream.next(false));
 	}
 
 }
