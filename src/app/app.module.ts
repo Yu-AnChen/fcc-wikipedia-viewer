@@ -8,18 +8,23 @@ import { AppComponent } from './app.component';
 import { WikiComponent } from './wiki/wiki.component';
 import { WikiSmartComponent } from './wiki-smart/wiki-smart.component';
 
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
+import { FooterComponent } from './footer/footer.component';
+
 @NgModule({
 	declarations: [
 		AppComponent,
 		WikiComponent,
-		WikiSmartComponent
+		WikiSmartComponent,
+		FooterComponent
 	],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
 		FormsModule,
 		HttpModule,
-		JsonpModule
+		JsonpModule,
+		AngularFontAwesomeModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]
