@@ -25,5 +25,5 @@ import {
 	]
 })
 export class AppComponent {
-	title = 'app works!';
+	title = 'Wikipedia Viewer';
 }

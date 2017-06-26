@@ -1,0 +1,35 @@
+@import './wiki-smart/wiki-smart.component.scss';
+@import '../styles/_variables.scss';
+
+.content {
+	width: 600px;
+	@media screen and (max-width: 599px) {
+		width: 100%;
+	}
+	min-height: 97vh;
+}
+header {
+	display: flex;
+	align-items: center;
+	h1 {
+		font-size: 1.5em;
+		font-weight: 700;
+		margin: 1em 0;
+	}
+}
+
+#random-link {
+	@extend .wiki-item;
+	margin: 0;
+	padding: 0.75em 1em;
+
+	&:visited {
+		color: $textColor;
+	}
+}
+
+.main {
+	// @extend header;
+	// min-height: 75vh;
+	display: flex;
+}

@@ -1,5 +1,14 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container flex-center-column">
+	<div class="content d-flex-column">
+		<header class="width-full">
+			<h1 class="darkText width-full">
+				{{title}}
+			</h1>
+			<a id="random-link" href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">random</a>
+		</header>
+		<app-wiki-smart class="main flex-fill"></app-wiki-smart>
+		<app-footer></app-footer>
+	</div>
+</div>
+
 <!--<app-wiki></app-wiki>-->
-<app-wiki-smart></app-wiki-smart>
