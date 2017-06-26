@@ -1,11 +1,61 @@
+@import '../../styles/_variables.scss';
 .fade {
 	opacity: 0.3;
 }
 
+.container-search {
+	margin-bottom: 2em;
+
+	input {
+		font-family: $fontFamily;
+		font-weight: 300;
+		font-size: 2em;
+		color: $textColorAccent;
+		background-color: $bodyBgColor;
+		border-style: none;
+		outline: none;
+		border-bottom: white dashed 3px;
+		padding-bottom: 0.1em;
+		min-width: 0;
+		flex: 1;
+
+		&:focus {
+			// border-bottom: white solid 2px;
+		}
+	}
+}
+
+
+fa {
+	padding-right: 5px;
+	color: $textColorAccent;
+}
 .wiki-item {
 	display: block;
-    background-color: peachpuff;
+    background-color: $textColorAccent;
     text-decoration: none;
-    padding: 1em;
-	margin: 0.25em 0;
+    padding: 1.25em;
+    margin: 0.75em 0;
+    font-weight: 400;
+    letter-spacing: 0.07em;
+	box-shadow: 5px 5px 5px #888888;
+	transition: background-color 1.2s;
+
+	&:hover {
+		background-color: darken($textColorAccent, 7.5%);
+	}
+
+	h3 {
+		// color: $textColor;
+		margin-top: 0;
+		// font-weight: 400;
+	}
+
+	p {
+		margin-bottom: 0;
+		font-size: 0.9em;
+    	line-height: 1.4;
+	}
 }
+
+@include linx ($textColor, #888, #fff, #888)

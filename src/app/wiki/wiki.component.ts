@@ -8,12 +8,13 @@ import { WikipediaService } from './wikipedia.service';
 	//   templateUrl: './wiki.component.html',
 	template: `
 		<h1>Wikipedia Demo</h1>
-		<p>Search after each keystroke</p>
-		<input #term (keyup)="search(term.value)"/>
-		<ul>
-			<li *ngFor="let item of items | async">{{item}}</li>
-		</ul>
-	`,
+		`
+		// <p>Search after each keystroke</p>
+		// <input #term (keyup)="search(term.value)"/>
+		// <ul>
+		// 	<li *ngFor="let item of items | async">{{item}}</li>
+		// </ul>
+	,
 	styleUrls: ['./wiki.component.scss'],
 	providers: [WikipediaService]
 })

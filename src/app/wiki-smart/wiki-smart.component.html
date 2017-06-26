@@ -1,14 +1,29 @@
-<h1>Smarter Wikipedia Demo</h1>
-<p>Search when typing stops</p>
-<input #term (keyup)="search(term.value)" />
+<div class="d-flex-column width-full">
+
+
+<div class="flex-center-row container-search">
+	<fa name="search" size="lg"></fa>
+	<input #term (keyup)="search(term.value)" />
+</div>
+
+<div *ngIf="!(items | async)?.length && !(isSearchingStream | async)"
+	class="darkText flex-center-column flex flex-fill">
+	{{ term.value ? 'Nothing is found. Try again?' : 'Search Wikipedia' }}
+	<fa *ngIf="term.value" name="compass" size="3x" animation="spin"></fa>
+	<fa *ngIf="!term.value"name="keyboard-o " size="3x"></fa>
+</div>
+<div *ngIf="!(items | async)?.length && (isSearchingStream | async)"
+	class="darkText flex-center-column flex flex-fill">
+	Searching...
+	<fa name="search" size="3x" class="ani-blink"></fa>
+</div>
 
 <a *ngFor="let item of items | async"
 	[ngClass]="{'fade': (isSearchingStream | async)}"
 	class="wiki-item"
-	[href]="item[2]">
+	[href]="item[2]" target="_blank">
 	<h3>{{item[0]}}</h3>
 	<p>{{item[1]}}</p>
 </a>
-<div *ngIf="!(items | async)?.length">
-	nothing being searched
 </div>
+

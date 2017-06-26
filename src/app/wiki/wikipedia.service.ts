@@ -26,7 +26,7 @@ export class WikipediaService {
 
 	private extractData(res: Response): any {
 		let body = res.json();
-		console.log(res);
+		// console.log(res);
 		return body || [];
 	}
 	private parseData(data: Array<any>) {
