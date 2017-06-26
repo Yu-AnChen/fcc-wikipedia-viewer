@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/debounceTime';
@@ -17,6 +17,7 @@ import { WikipediaService } from '../wiki/wikipedia.service';
 	providers: [WikipediaService]
 })
 export class WikiSmartComponent implements OnInit {
+	@ViewChild('term') term;
 	items: Observable<any>;
 	private isSearchingStream = new Subject<boolean>(); ;
 	private searchTermStream = new Subject<string>();
@@ -28,10 +29,11 @@ export class WikiSmartComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.term.nativeElement.focus();
 		this.items = this.searchTermStream
 			.distinctUntilChanged()
 			.do(term => this.isSearchingStream.next(true))
-			.debounceTime(300)
+			.debounceTime(500)
 			.distinctUntilChanged()
 			.switchMap((term: string) => {
 				if (!term) return Promise.resolve([]);
